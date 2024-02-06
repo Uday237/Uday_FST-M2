@@ -1,0 +1,7 @@
+vim txtFile.txt
+vim csvFile.csv
+hdfs dfs -mkdir /user/root/textData
+hdfs dfs -put ./txtFile.txt /user/root/textData
+hdfs dfs -put ./csvFile.csv /user/root/textData
+hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/textData/txtFile.txt
+hdfs dfs -stat "type:%F permissions:%a %u:%g size:%b name:%n" /user/root/textData/csvFile.csv
