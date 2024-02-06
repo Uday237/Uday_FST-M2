@@ -1,0 +1,11 @@
+DROP TABLE files;
+
+CREATE TABLE files(name STRING, dialogues STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+LOAD DATA LOCAL INPATH '/root/pigactivity' INTO TABLE files;
+
+INSERT OVERWRITE LOCAL DIRECTORY '/root/projectOutput'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+SELECT name, COUNT(dialogues) AS dialoguesSpoken FROM files
+GROUP BY name
+ORDER BY dialoguesSpoken DESC;
