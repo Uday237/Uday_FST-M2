@@ -1,0 +1,9 @@
+DROP TABLE employee;
+CREATE TABLE employee(id INT, name STRING, dept STRING, yoj INT, salary INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+TBLPROPERTIES ("skip.header.line.count"="1");
+LOAD DATA LOCAL INPATH '/root/EmpData.csv' INTO TABLE employee;
+
+INSERT OVERWRITE LOCAL DIRECTORY '/root/activity5output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT id, name, salary FROM employee WHERE salary > 30000 ORDER BY salary DESC;
