@@ -6,4 +6,4 @@ LOAD DATA LOCAL INPATH '/root/pigactivity/episodeIV_dialogues.txt' INTO TABLE fi
 
 INSERT OVERWRITE LOCAL DIRECTORY '/root/projectOutput2'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-SELECT COUNT(*) FROM files2 WHERE name LIKE '%LUKE%'; 
+SELECT COUNT(*) FROM files2 WHERE dialogues LIKE '%Luke%'; 
